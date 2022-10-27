@@ -4,8 +4,8 @@ import cv2 as cv
 from PIL import Image
 
 # fix windows cmd
-from colorama import just_fix_windows_console
-just_fix_windows_console()
+import colorama
+colorama.init()
 
 
 
@@ -21,8 +21,7 @@ def get_closest(tuplelist: list,tuple: tuple):
     return nearest
 # to move cursor 
 def move (y, x):
-    sys.stdout.write("\033[%d;%dH" % (y, x))
-
+    colorama.Cursor.POS(x,y)
 colors = {(0,0,0):40,
           (255,0,0):41,
           (0,255,0):42,
