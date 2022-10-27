@@ -49,4 +49,7 @@ while cap.isOpened():
             frame+=f"\033[{colors[get_closest(colors.keys(),pixel)]}m "
     sys.stdout.write(frame)
     # return to 0 0
-    move(0,0)
+    if os.name == "NT":
+        os.system("clear")
+    else:
+        move(0,0)
