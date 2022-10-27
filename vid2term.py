@@ -2,6 +2,13 @@ import os
 import sys
 import cv2 as cv
 from PIL import Image
+
+# fix windows cmd
+from colorama import just_fix_windows_console
+just_fix_windows_console()
+
+
+
 # get distance of 2 tuples
 def tuple_distance(tuple1: tuple,tuple2: tuple):
     d1 = max(tuple1[0],tuple2[0]) - min(tuple1[0],tuple2[0])
@@ -24,17 +31,6 @@ colors = {(0,0,0):40,
           (255,0,255):45,
           (0,255,255):46,
           (255,255,255):47}
-
-list =  [(0,0,0),
-         (255,0,0),
-         (0,255,0),
-         (255,255,0),
-         (0,0,255),
-         (255,0,255),
-         (0,255,255),
-         (255,255,255)
-         ]
-
 cap = cv.VideoCapture(sys.argv[1])
 while cap.isOpened():
     ret, frame = cap.read()
@@ -44,14 +40,14 @@ while cap.isOpened():
         break
     im = Image.fromarray(frame)
     # resize
-    width,height = os.get_terminal_size()
-    im = im.resize((width,height))
+    height = 
+    im = im.resize(os.get_terminal_size())
     frame = ""
     for y in range(height):
         for x in range(width):
             pixel = im.getpixel((x,y))
             
-            frame+=f"\033[{colors[get_closest(list,pixel)]}m "
+            frame+=f"\033[{colors[get_closest(colors.keys(),pixel)]}m "
     sys.stdout.write(frame)
     # return to 0 0
     move(0,0)
