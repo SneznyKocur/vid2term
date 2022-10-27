@@ -1,1 +1,1 @@
-opencv-python pillow
+opencv-python pillow colorama
