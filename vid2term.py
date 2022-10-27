@@ -40,8 +40,8 @@ while cap.isOpened():
         break
     im = Image.fromarray(frame)
     # resize
-    height,width = os.get_terminal_size() 
-    im = im.resize(os.get_terminal_size())
+    width,height = os.get_terminal_size()
+    im = im.resize((width,height))
     frame = ""
     for y in range(height):
         for x in range(width):
